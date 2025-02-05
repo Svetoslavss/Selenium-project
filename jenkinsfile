@@ -12,18 +12,7 @@ pipeline {
             }
         }
 
-       stage('Setup .NET SDK 6.0') {
-            steps {
-        bat '''echo Downloading .NET SDK...
-            curl -L https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz --output dotnet-sdk.tar.gz
-            mkdir C:\\usr\\share\\dotnet
-            powershell -Command "Expand-Archive -Path dotnet-sdk.tar.gz -DestinationPath C:\\usr\\share\\dotnet"
-            set PATH=%PATH%;C:\\usr\\share\\dotnet
-        '''
-    }
-}
-
-
+     
         stage('Restore dependencies') {
             steps {
                 bat 'dotnet restore --verbosity normal'

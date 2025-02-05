@@ -14,12 +14,8 @@ pipeline {
 
     stage('Setup .NET SDK 6.0') {
       steps {
-        // Ensure the .NET SDK 6.0 is installed on the Jenkins agent
-        // If using a custom path or setup, you can manually download it as follows (Linux example):
-        sh 'wget https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz -O dotnet-sdk.tar.gz'
-        sh 'mkdir -p /usr/share/dotnet'
-        sh 'tar -xvf dotnet-sdk.tar.gz -C /usr/share/dotnet'
-        sh 'export PATH=$PATH:/usr/share/dotnet'  // Add dotnet to PATH
+       sh 'wget https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz -O dotnet-sdk.tar.gz && mkdir -p /usr/share/dotnet && tar -xvf dotnet-sdk.tar.gz -C /usr/share/dotnet && export PATH=$PATH:/usr/share/dotnet'
+            }
       }
     }
 

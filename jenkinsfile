@@ -2,8 +2,8 @@ pipeline {
   agent any
 
   environment {
-    DOTNET version = '6.0.x'
-  }
+    DOTNET_VERSION = '6.0.x'
+}
 
   stages {
     stage('Checkout repository') {

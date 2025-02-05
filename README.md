@@ -19,3 +19,11 @@ Technologies: Selenium WebDriver, .NET
 # Jenkins Pipeline stages status overview : 
 
 ![pipeline-build](https://github.com/user-attachments/assets/c0109a32-97e6-476c-bb90-bdae84a8ac3e)
+
+# Run Jenkins Pipeline parallel tests for the 3 projects.
+
+![jenkins-runtesst-parallel](https://github.com/user-attachments/assets/7f186f00-168f-4f99-920c-135ac782974e)
+
+
+
+

@@ -28,21 +28,21 @@ pipeline {
         stage('Run tests for Project1') {
             steps {
                 echo 'Run the unit tests for project1'
-                bat 'dotnet test TestProject1.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject1/TestProject1.csproj --no-build --verbosity normal'
             }
         }
 
         stage('Run tests for Project2') {
             steps {
                 echo 'Run the unit tests for project2'
-                bat 'dotnet test TestProject2.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject2/TestProject2.csproj --no-build --verbosity normal'
             }
         }
 
         stage('Run tests for Project3') {
             steps {
                 echo 'Run the unit tests for project3'
-                bat 'dotnet test TestProject3.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity normal'
             }
         }
     }

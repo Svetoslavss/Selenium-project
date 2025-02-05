@@ -12,36 +12,47 @@ pipeline {
             }
         }
 
+        stage('Setup .NET SDK 6.0') {
+            steps {
+                bat '''echo Downloading .NET SDK...
+                    wget https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz -O dotnet-sdk.tar.gz
+                    mkdir C:\\usr\\share\\dotnet
+                    tar -xvf dotnet-sdk.tar.gz -C C:\\usr\\share\\dotnet
+                    set PATH=%PATH%;C:\\usr\\share\\dotnet
+                '''
+            }
+        }
+
         stage('Restore dependencies') {
             steps {
-                sh 'dotnet restore'
+                bat 'dotnet restore --verbosity normal'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'dotnet build'
+                bat 'dotnet build --no-restore'
             }
         }
 
         stage('Run tests for Project1') {
             steps {
                 echo 'Run the unit tests for project1'
-                sh 'dotnet test TestProject1.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject1.csproj --no-build --verbosity normal'
             }
         }
 
         stage('Run tests for Project2') {
             steps {
                 echo 'Run the unit tests for project2'
-                sh 'dotnet test TestProject2.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject2.csproj --no-build --verbosity normal'
             }
         }
 
         stage('Run tests for Project3') {
             steps {
                 echo 'Run the unit tests for project3'
-                sh 'dotnet test TestProject3.csproj --no-build --verbosity normal'
+                bat 'dotnet test TestProject3.csproj --no-build --verbosity normal'
             }
         }
     }

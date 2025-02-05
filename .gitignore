@@ -1,0 +1,45 @@
+# User-specific files
+.idea/
+.vs/
+.vscode/
+*.[Cc]ache
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]evelopment/
+[Dd]eployment/
+[Dd]ist/
+[Dd]istros/
+[Dd]ebug/
+[Dd]ebugFinal/
+[Dd]ebug-AnyCPU/
+[Dd]ebug-x86/
+[Dd]ebug-x64/
+[Dd]ebug-x86_64/
+[Dd]ebug-win32/
+[Dd]ebug-windows/
+[Dd]ebug-Windows-x64/
+[Dd]ebug-Windows-x86/
+[Dd]ebugAnyCPU/
+[Dd]ebugAll/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer Database files
+*.wixproj
+*.wixobj
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates

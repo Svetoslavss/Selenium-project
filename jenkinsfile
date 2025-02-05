@@ -30,6 +30,8 @@ pipeline {
             }
         }
 
+        stage('Test'){
+            parallel{
         stage('Run tests for Project1') {
             steps {
                 echo 'Running tests for Project1'
@@ -50,6 +52,7 @@ pipeline {
                 bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity detailed'
             }
         }
+}
     }
 
     post {

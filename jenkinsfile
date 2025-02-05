@@ -30,27 +30,30 @@ pipeline {
             }
         }
 
-        stage('Run tests for Project1') {
-            steps {
-                echo 'Running tests for Project1'
-                bat 'dotnet test TestProject1/TestProject1.csproj --no-build --verbosity detailed'
-            }
-        }
-
-        stage('Run tests for Project2') {
-            steps {
-                echo 'Running tests for Project2'
-                bat 'dotnet test TestProject2/TestProject2.csproj --no-build --verbosity detailed'
-            }
-        }
-
-        stage('Run tests for Project3') {
-            steps {
-                echo 'Running tests for Project3'
-                bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity detailed'
+        stage('Run tests') {
+            parallel {
+                stage('Run tests for Project1') {
+                    steps {
+                        echo 'Running tests for Project1'
+                        bat 'dotnet test TestProject1/TestProject1.csproj --no-build --verbosity detailed'
+                    }
+                }
+                stage('Run tests for Project2') {
+                    steps {
+                        echo 'Running tests for Project2'
+                        bat 'dotnet test TestProject2/TestProject2.csproj --no-build --verbosity detailed'
+                    }
+                }
+                stage('Run tests for Project3') {
+                    steps {
+                        echo 'Running tests for Project3'
+                        bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity detailed'
+                    }
+                }
             }
         }
     }
+
 
     post {
         always {

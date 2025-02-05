@@ -13,7 +13,7 @@ Description: This project automates UI tests using Selenium WebDrive.
 Technologies: Selenium WebDriver, .NET, NUnit
 
 # Project 3: Test Project 3
-Description:This project automates UI tests using Selenium WebDrive.
+Description: This project automates UI tests using Selenium WebDrive.
 Technologies: Selenium WebDriver, .NET
 
 # Jenkins Pipeline stages status overview : 

@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout repository') {
       steps {
-        sh 'git clone https://github.com/Svetoslavss/Selenium-project.git'
+        git 'https://github.com/Svetoslavss/Selenium-project.git'
       }
     }
 

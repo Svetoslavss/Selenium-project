@@ -12,37 +12,42 @@ pipeline {
             }
         }
 
-     
+        stage('List files in the workspace') {
+            steps {
+                bat 'dir'  // This will help check if the project files exist in the right place
+            }
+        }
+
         stage('Restore dependencies') {
             steps {
-                bat 'dotnet restore --verbosity normal'
+                bat 'dotnet restore --verbosity detailed'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'dotnet build --no-restore'
+                bat 'dotnet build --no-restore --verbosity detailed'
             }
         }
 
         stage('Run tests for Project1') {
             steps {
-                echo 'Run the unit tests for project1'
-                bat 'dotnet test TestProject1/TestProject1.csproj --no-build --verbosity normal'
+                echo 'Running tests for Project1'
+                bat 'dotnet test TestProject1/TestProject1.csproj --no-build --verbosity detailed'
             }
         }
 
         stage('Run tests for Project2') {
             steps {
-                echo 'Run the unit tests for project2'
-                bat 'dotnet test TestProject2/TestProject2.csproj --no-build --verbosity normal'
+                echo 'Running tests for Project2'
+                bat 'dotnet test TestProject2/TestProject2.csproj --no-build --verbosity detailed'
             }
         }
 
         stage('Run tests for Project3') {
             steps {
-                echo 'Run the unit tests for project3'
-                bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity normal'
+                echo 'Running tests for Project3'
+                bat 'dotnet test TestProject3/TestProject3.csproj --no-build --verbosity detailed'
             }
         }
     }

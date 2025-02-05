@@ -14,13 +14,13 @@ pipeline {
 
         stage('Restore dependencies') {
             steps {
-                sh 'dotnet restore --verbosity normal'
+                sh 'dotnet restore'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'dotnet build --no-restore'
+                sh 'dotnet build'
             }
         }
 

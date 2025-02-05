@@ -15,3 +15,7 @@ Technologies: Selenium WebDriver, .NET, NUnit
 # Project 3: Test Project 3
 Description:This project automates UI tests using Selenium WebDrive.
 Technologies: Selenium WebDriver, .NET
+
+# Pipeline stages status overview : 
+
+![pipeline-build](https://github.com/user-attachments/assets/c0109a32-97e6-476c-bb90-bdae84a8ac3e)

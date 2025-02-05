@@ -1,67 +1,66 @@
 pipeline {
-  agent any
+    agent any
 
-  environment {
-    DOTNET_VERSION = '6.0.x'
-}
-
-  stages {
-    stage('Checkout repository') {
-      steps {
-         git branch: 'main', url: 'https://github.com/Svetoslavss/Selenium-project.git'
-      }
+    environment {
+        DOTNET_VERSION = '6.0.x'
     }
 
-    stage('Setup .NET SDK 6.0') {
-      steps {
-       sh 'wget https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz -O dotnet-sdk.tar.gz && mkdir -p /usr/share/dotnet && tar -xvf dotnet-sdk.tar.gz -C /usr/share/dotnet && export PATH=$PATH:/usr/share/dotnet'
+    stages {
+        stage('Checkout repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Svetoslavss/Selenium-project.git'
             }
-      }
+        }
+
+        stage('Setup .NET SDK 6.0') {
+            steps {
+                sh 'wget https://download.visualstudio.microsoft.com/download/pr/4cc79e59-49cc-460b-b848-f07ed1be6639/6f4fd04d944220ecf0a52e96d560f0f8/dotnet-sdk-6.0.300-linux-x64.tar.gz -O dotnet-sdk.tar.gz && mkdir -p /usr/share/dotnet && tar -xvf dotnet-sdk.tar.gz -C /usr/share/dotnet && export PATH=$PATH:/usr/share/dotnet'
+            }
+        }
+
+        stage('Restore dependencies') {
+            steps {
+                sh 'dotnet restore --verbosity normal'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'dotnet build --no-restore'
+            }
+        }
+
+        stage('Run tests for Project1') {
+            steps {
+                echo 'Run the unit tests for project1'
+                sh 'dotnet test TestProject1.csproj --no-build --verbosity normal'
+            }
+        }
+
+        stage('Run tests for Project2') {
+            steps {
+                echo 'Run the unit tests for project2'
+                sh 'dotnet test TestProject2.csproj --no-build --verbosity normal'
+            }
+        }
+
+        stage('Run tests for Project3') {
+            steps {
+                echo 'Run the unit tests for project3'
+                sh 'dotnet test TestProject3.csproj --no-build --verbosity normal'
+            }
+        }
     }
 
-    stage('Restore dependencies') {
-      steps {
-        sh 'dotnet restore --verbosity normal'
-      }
+    post {
+        always {
+            echo 'Tests are completed!'
+        }
+        success {
+            echo 'Tests passed!'
+        }
+        failure {
+            echo 'Tests failed!'
+        }
     }
-
-    stage('Build') {
-      steps {
-        sh 'dotnet build --no-restore'
-      }
-    }
-
-    stage('Run tests for Project1') {
-      steps {
-        echo 'Run the unit tests for project1'
-        sh 'dotnet test TestProject1.csproj --no-build --verbosity normal'
-      }
-    }
-
-    stage('Run tests for Project2') {
-      steps {
-        echo 'Run the unit tests for project2'
-        sh 'dotnet test TestProject2.csproj --no-build --verbosity normal'
-      }
-    }
-
-    stage('Run tests for Project3') {
-      steps {
-        echo 'Run the unit tests for project3'
-        sh 'dotnet test TestProject3.csproj --no-build --verbosity normal'
-      }
-    }
-  }
-
-  post {
-    always {
-      echo 'Tests are completed!'
-    }
-    success {
-      echo 'Tests passed!'
-    }
-    failure {
-      echo 'Tests failed!'
-    }
-  }
 }

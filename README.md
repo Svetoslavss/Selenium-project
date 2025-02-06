@@ -2,7 +2,7 @@
 
 This repository contains Selenium-based test automation projects for .NET applications. These tests are designed to automate web application testing using Selenium WebDriver and are integrated into a Jenkins Continuous Integration (CI) pipeline to ensure smooth execution of test cases during each commit.
 
-<h2>Projects Overview: </h2>
+<h2>Projects Overview:</h2>
 
 # Project 1: Test Project 1
 Description: This project automates UI tests using Selenium WebDriver.
